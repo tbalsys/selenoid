@@ -125,6 +125,10 @@ func create(w http.ResponseWriter, r *http.Request) {
 			FirstMatch []*session.Caps `json:"firstMatch"`
 		} `json:"capabilities"`
 	}
+	browser.Caps.Video = true
+	browser.Caps.VNC = true
+	browser.W3CCaps.Caps.VNC = true
+	browser.W3CCaps.Caps.Video = true
 	err = json.Unmarshal(body, &browser)
 	if err != nil {
 		log.Printf("[%d] [BAD_JSON_FORMAT] [%v]", requestId, err)
